@@ -1,2 +1,4 @@
 ---
 # vars file for base-config
+
+repo_path: admin.na.shared.opentlc.com

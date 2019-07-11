@@ -1,2 +1,12 @@
 ---
 # handlers file for lb-tier
+
+- name: enable haproxy service
+  service:
+    name: haproxy
+    enabled: yes
+
+- name: start haproxy service
+  service:
+    name: haproxy
+    state: restarted

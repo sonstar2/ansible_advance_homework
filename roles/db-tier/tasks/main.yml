@@ -1,2 +1,24 @@
 ---
 # tasks file for db-tier
+
+- name: install postgres
+  package:
+    name: postgresql-server
+    state: latest
+
+- name: tell user to finish setting up postgres
+  debug:
+    msg: "Either uncomment the postgres setup or manually login and initialize"
+
+- name: Check if db is initialized
+  stat:
+    path: /var/lib/pgsql/data
+  register: pgsql_data
+
+# only run the next 2 tasks once!
+- name: initilize postgres
+  command: postgresql-setup initdb
+  when: not pgsql_data.stat.exists
+  notify:
+    - start postgres
+    - enable postgres at boot

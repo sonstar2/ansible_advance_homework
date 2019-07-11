@@ -1,2 +1,14 @@
 ---
 # handlers file for db-tier
+
+- name: start postgres
+  service:
+    name: postgresql.service
+    state: started
+
+
+- name: enable postgres at boot
+  service:
+    name: postgresql
+    enabled: yes
+

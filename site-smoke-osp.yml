@@ -4,7 +4,7 @@
   - name: OpenStack servers
     os_server_facts:
      cloud: ospcloud
-#     server: 'frontend'
+     server: 'frontend'
     register: openstack_info
     tags:
       - osp.smoke
@@ -17,14 +17,6 @@
     register: webpage
     tags:
       - osp.smoke
-
-  - name: debug openstack_info
-    debug:
-      var: openstack_info
-
-  - name: debug
-    debug:
-      var: webpage 
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
